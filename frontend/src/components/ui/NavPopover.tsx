@@ -2,6 +2,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 interface Category {
   name: string;
@@ -17,6 +18,11 @@ interface NavPopoverProps {
 
 const NavPopover = ({ buttonText, categories }: NavPopoverProps) => {
   const [selected, setSelected] = useState<boolean>(false);
+  const router = useRouter();
+
+  const handleCategoryClick = (href: string) => {
+    router.push(href);
+  };
 
   return (
     <div
@@ -48,6 +54,12 @@ const NavPopover = ({ buttonText, categories }: NavPopoverProps) => {
 };
 
 const Content = ({ categories, buttonText }: NavPopoverProps) => {
+  const router = useRouter();
+
+  const handleCategoryClick = (href: string) => {
+    router.push(href);
+  };
+
   return (
     <motion.div
       id={`overlay-content-${buttonText}`}
@@ -95,7 +107,14 @@ const Content = ({ categories, buttonText }: NavPopoverProps) => {
               </div>
             )}
             <div>
-              <a href={item.href} className="font-medium text-gray-900 group-hover:text-[#E6AACE] transition-colors duration-300">
+              <a
+                href={item.href}
+                className="font-medium text-gray-900 group-hover:text-[#E6AACE] transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleCategoryClick(item.href);
+                }}
+              >
                 {item.name}
                 <span className="absolute inset-0" />
               </a>

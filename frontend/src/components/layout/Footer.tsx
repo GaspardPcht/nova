@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#F8F2E6] text-gray-700">
+    <footer className="bg-[#F8F2E6] text-gray-700 mt-10 ">
       <div className="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h4 className="text-xl font-bold mb-4 text-[#E6AACE]">À propos de Nova</h4>
