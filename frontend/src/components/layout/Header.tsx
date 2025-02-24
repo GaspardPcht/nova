@@ -10,6 +10,8 @@ import {
 } from '@heroicons/react/24/outline';
 import NavPopover from '../ui/NavPopover';
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const femmeCategories = [
   { 
@@ -64,6 +66,8 @@ const accessoiresCategories = [
 
 const Header = () => {
   const router = useRouter();
+  const { cart } = useCart();
+  const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <header className="fixed top-0 w-full bg-[#F8F2E6] backdrop-blur-sm shadow-sm z-50">
@@ -88,8 +92,23 @@ const Header = () => {
             Promotions
           </li>
         </ul>
-        <div className="cursor-pointer text-2xl hover:text-[#E6AACE] transition-colors text-gray-700">
+        <div 
+          className="relative cursor-pointer text-2xl hover:text-[#E6AACE] transition-colors text-gray-700"
+          onClick={() => router.push('/panier')}
+        >
           🛒
+          <AnimatePresence>
+            {cartItemsCount > 0 && (
+              <motion.span 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+                className="absolute -top-2 -right-2 bg-[#E6AACE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+              >
+                {cartItemsCount}
+              </motion.span>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
     </header>

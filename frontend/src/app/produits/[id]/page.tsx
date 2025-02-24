@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { useCart } from '@/context/CartContext';
+import { motion } from 'framer-motion';
 
 // Simulation d'une base de données de produits plus complète
 const productsDatabase: Record<number, {
@@ -277,10 +279,29 @@ const productsDatabase: Record<number, {
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
-  const [mainImage, setMainImage] = useState(0);
+  const [error, setError] = useState('');
+  const { addToCart } = useCart();
 
   const productId = parseInt(params.id);
   const product = productsDatabase[productId];
+
+  const handleAddToCart = () => {
+    if (!selectedSize || !selectedColor) {
+      setError('Veuillez sélectionner une taille et une couleur');
+      return;
+    }
+    
+    setError('');
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+      size: selectedSize,
+      color: selectedColor
+    });
+  };
 
   if (!product) {
     return (
@@ -308,7 +329,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="space-y-4">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                 <Image
-                  src={`/merch/${product.images[mainImage]}.png`}
+                  src={`/merch/${product.images[0]}.png`}
                   alt={product.title}
                   layout="fill"
                   objectFit="cover"
@@ -320,9 +341,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   <div
                     key={index}
                     className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
-                      mainImage === index ? 'ring-2 ring-[#E6AACE]' : ''
+                      index === 0 ? 'ring-2 ring-[#E6AACE]' : ''
                     }`}
-                    onClick={() => setMainImage(index)}
                   >
                     <Image
                       src={`/merch/${img}.png`}
@@ -381,6 +401,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
+              {/* Message d'erreur */}
+              {error && (
+                <p className="text-red-500 text-sm">{error}</p>
+              )}
+
               {/* Détails produit */}
               <div className="border-t pt-6">
                 <h3 className="text-sm font-medium text-gray-700 mb-4">Détails du produit</h3>
@@ -392,19 +417,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* Bouton ajouter au panier */}
-              <button
-                className="w-full bg-[#E6AACE] text-white py-3 rounded-lg hover:bg-[#d999bc] transition-colors duration-300 mt-8"
-                onClick={() => {
-                  // Logique d'ajout au panier
-                  console.log('Ajout au panier:', {
-                    ...product,
-                    selectedSize,
-                    selectedColor,
-                  });
-                }}
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className={`w-full py-3 rounded-lg transition-colors duration-300 ${
+                  !selectedSize || !selectedColor
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-[#E6AACE] text-white hover:bg-[#d999bc]'
+                }`}
+                onClick={handleAddToCart}
               >
                 Ajouter au panier
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
