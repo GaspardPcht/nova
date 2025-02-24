@@ -11,9 +11,9 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F8F2E6]">
+    <div className="flex flex-col min-h-screen bg-[#F8F2E6]">
       <Header />
-      <main className="pt-32 pb-16">
+      <main className="flex-grow pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-8">
           <h1 className="text-4xl font-bold text-black mb-8">Mon Panier</h1>
           

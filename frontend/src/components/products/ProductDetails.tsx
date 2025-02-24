@@ -284,6 +284,7 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [error, setError] = useState('');
+  const [selectedImage, setSelectedImage] = useState(0);
   const { addToCart } = useCart();
 
   const productId = parseInt(id);
@@ -333,7 +334,7 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
             <div className="space-y-4">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                 <Image
-                  src={`/merch/${product.image}.png`}
+                  src={`/merch/${product.images[selectedImage]}.png`}
                   alt={product.title}
                   layout="fill"
                   objectFit="cover"
@@ -341,12 +342,14 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
                 />
               </div>
               <div className="grid grid-cols-3 gap-4">
-                {[product.image, product.image, product.image].map((img, index) => (
-                  <div
+                {product.images.map((img, index) => (
+                  <motion.div
                     key={index}
-                    className={`relative aspect-square rounded-lg overflow-hidden ${
-                      index === 0 ? 'ring-2 ring-[#E6AACE]' : ''
+                    whileHover={{ scale: 1.05 }}
+                    className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
+                      selectedImage === index ? 'ring-2 ring-[#E6AACE]' : ''
                     }`}
+                    onClick={() => setSelectedImage(index)}
                   >
                     <Image
                       src={`/merch/${img}.png`}
@@ -354,7 +357,7 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
                       layout="fill"
                       objectFit="cover"
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
