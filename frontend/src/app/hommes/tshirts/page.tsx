@@ -1,13 +1,14 @@
+'use client'
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
-  { id: 1, title: "T-Shirt Classic", price: 19.99, image: "merch16" },
-  { id: 2, title: "T-Shirt Sport", price: 24.99, image: "merch17" },
-  { id: 3, title: "T-Shirt Casual", price: 22.99, image: "merch18" },
-  { id: 4, title: "T-Shirt Premium", price: 29.99, image: "merch19" },
+  { id: 12, title: "T-Shirt Classic", price: 19.99, image: "merch16" },
+  { id: 8, title: "T-Shirt Sport", price: 24.99, image: "merch8" },
+  { id: 9, title: "T-Shirt Casual", price: 22.99, image: "merch2" },
+  { id: 11, title: "T-Shirt Premium", price: 29.99, image: "merch15" },
 ];
 
 const TshirtsHommes = () => {
@@ -54,6 +55,7 @@ const TshirtsHommes = () => {
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
+                  id={product.id}
                   title={product.title}
                   price={product.price}
                   image={product.image}

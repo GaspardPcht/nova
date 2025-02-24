@@ -1,13 +1,14 @@
+'use client'
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
-  { id: 1, title: "Pull Col V", price: 49.99, image: "merch10" },
-  { id: 2, title: "Pull Casual", price: 54.99, image: "merch11" },
-  { id: 3, title: "Pull Coton", price: 45.99, image: "merch12" },
-  { id: 4, title: "Pull Laine", price: 59.99, image: "merch13" },
+  { id: 6, title: "Pull Col V", price: 49.99, image: "merch10" },
+  { id: 10, title: "Pull Casual", price: 54.99, image: "merch3" },
+  { id: 15, title: "Pull Coton", price: 45.99, image: "merch12" },
+  { id: 16, title: "Pull Laine", price: 59.99, image: "merch13" },
 ];
 
 const PullsHommes = () => {
@@ -54,6 +55,7 @@ const PullsHommes = () => {
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
+                  id={product.id}
                   title={product.title}
                   price={product.price}
                   image={product.image}
