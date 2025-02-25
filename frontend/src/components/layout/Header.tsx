@@ -79,7 +79,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 w-full bg-[#F8F2E6] backdrop-blur-sm shadow-sm z-10">
+      <header className="fixed top-0 w-full bg-[#F8F2E6] backdrop-blur-sm shadow-sm z-40">
         <nav className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center relative">
           <img 
             src="/nova.png" 
@@ -89,7 +89,7 @@ const Header = () => {
           />
 
           {/* Menu Desktop */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex space-x-8 relative z-50">
             <li>
               <NavPopover buttonText="Femmes" categories={femmeCategories} />
             </li>
@@ -142,7 +142,7 @@ const Header = () => {
       </header>
 
       {/* Menu Mobile et Overlay */}
-      <div className="relative z-50">
+      <div className="relative z-[60]">
         <AnimatePresence>
           {isMenuOpen && (
             <>
