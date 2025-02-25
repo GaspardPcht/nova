@@ -66,13 +66,13 @@ const HeroSection = () => {
           >
             <button 
               onClick={() => scrollToSection('featured-products')}
-              className="px-8 py-4 bg-[#1F2937] text-white text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
+              className="px-6 py-3 md:px-8 md:py-4 bg-[#1F2937] text-white text-base md:text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
             >
               Shop Now
             </button>
             <button 
               onClick={() => scrollToSection('about-section')}
-              className="px-8 py-4 bg-white text-[#1F2937] text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] hover:text-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
+              className="px-6 py-3 md:px-8 md:py-4 bg-white text-[#1F2937] text-base md:text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] hover:text-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
             >
               À propos
             </button>

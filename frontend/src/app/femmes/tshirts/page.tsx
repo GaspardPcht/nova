@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Layout from '@/components/layout/Layout';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
@@ -13,9 +12,8 @@ const products = [
 
 const TshirtsFemmes = () => {
   return (
-    <div className="min-h-screen bg-[#F8F2E6]">
-      <Header />
-      <main className="pt-32 relative">
+    <Layout>
+      <div className="pt-32 relative">
         {/* Éléments décoratifs */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute right-0 top-60 w-[40rem] h-[40rem] bg-[#E6AACE]/10 rounded-full blur-3xl" />
@@ -64,9 +62,8 @@ const TshirtsFemmes = () => {
             </div>
           </section>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 };
 

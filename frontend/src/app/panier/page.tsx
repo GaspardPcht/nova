@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Layout from '@/components/layout/Layout';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,9 +10,8 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F2E6]">
-      <Header />
-      <main className="flex-grow pt-32 pb-16">
+    <Layout>
+      <div className="pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-8">
           <h1 className="text-4xl font-bold text-black mb-8">Mon Panier</h1>
           
@@ -27,45 +25,51 @@ export default function CartPage() {
                 <AnimatePresence>
                   {cart.map((item) => (
                     <motion.div
-                      key={`${item.id}-${item.size}-${item.color}`}
+                      key={`${item.id}-${item.selectedColor}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, x: -100 }}
-                      className="bg-white rounded-xl p-4 shadow-sm flex gap-4"
+                      exit={{ opacity: 0, y: -20 }}
+                      className="bg-white rounded-xl p-6 shadow-sm"
                     >
-                      <div className="relative w-24 h-24">
-                        <Image
-                          src={item.color === 'Noir' ? `/merch-black/${item.image}.png` : `/merch/${item.image}.png`}
-                          alt={item.title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="rounded-lg"
-                        />
-                      </div>
-                      <div className="flex-grow">
-                        <h3 className="font-semibold text-black">{item.title}</h3>
-                        <p className="text-[#E6AACE] font-medium">{item.price.toFixed(2)} €</p>
-                        {item.size && <p className="text-sm text-black">Taille: {item.size}</p>}
-                        {item.color && <p className="text-sm text-black">Couleur: {item.color}</p>}
-                      </div>
-                      <div className="flex flex-col items-end gap-2">
-                        <select
-                          value={item.quantity}
-                          onChange={(e) => updateQuantity(item.id, item.size || '', item.color || '', parseInt(e.target.value))}
-                          className="border rounded px-2 py-1 text-black"
-                        >
-                          {[1, 2, 3, 4, 5].map(num => (
-                            <option key={num} value={num}>{num}</option>
-                          ))}
-                        </select>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => removeFromCart(item.id, item.size, item.color)}
-                          className="text-red-500 text-sm hover:underline"
-                        >
-                          Supprimer
-                        </motion.button>
+                      <div className="flex gap-6">
+                        <div className="relative w-24 h-24">
+                          <Image
+                            src={`/images/${item.image}.jpg`}
+                            alt={item.title}
+                            fill
+                            className="object-cover rounded-lg"
+                          />
+                        </div>
+                        <div className="flex-grow">
+                          <h3 className="text-lg font-semibold text-black">{item.title}</h3>
+                          <p className="text-gray-600">Couleur: {item.selectedColor}</p>
+                          <div className="flex items-center gap-4 mt-2">
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => updateQuantity(item.id, item.selectedColor, Math.max(1, item.quantity - 1))}
+                                className="text-gray-500 hover:text-black"
+                              >
+                                -
+                              </button>
+                              <span className="text-black">{item.quantity}</span>
+                              <button
+                                onClick={() => updateQuantity(item.id, item.selectedColor, item.quantity + 1)}
+                                className="text-gray-500 hover:text-black"
+                              >
+                                +
+                              </button>
+                            </div>
+                            <button
+                              onClick={() => removeFromCart(item.id, item.selectedColor)}
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              Supprimer
+                            </button>
+                          </div>
+                        </div>
+                        <div className="text-black font-semibold">
+                          {(item.price * item.quantity).toFixed(2)} €
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -101,8 +105,7 @@ export default function CartPage() {
             </div>
           )}
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 } 
