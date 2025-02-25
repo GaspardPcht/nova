@@ -26,7 +26,7 @@ const productsDatabase: Record<number, {
     description: "Un pull confortable avec un imprimé tendance. Parfait pour un look casual chic.",
     images: ["merch6", "merch6", "merch6"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Noir", "Blanc", "Rose"],
+    colors: ["Beige", "Noir"],
     details: [
       "Matière douce et confortable",
       "Imprimé exclusif",
@@ -42,7 +42,7 @@ const productsDatabase: Record<number, {
     description: "Le t-shirt basique indispensable à votre garde-robe. Coupe ajustée et matière premium.",
     images: ["merch4", "merch4", "merch4"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Noir", "Blanc", "Gris"],
+    colors: ["Beige", "Noir"],
     details: [
       "100% coton peigné",
       "Coupe ajustée",
@@ -58,7 +58,7 @@ const productsDatabase: Record<number, {
     description: "T-shirt avec un imprimé artistique unique. Pour un style affirmé et original.",
     images: ["merch5", "merch5", "merch5"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Noir", "Blanc", "Bleu"],
+    colors: ["Beige", "Noir"],
     details: [
       "Coton biologique",
       "Impression haute qualité",
@@ -74,7 +74,7 @@ const productsDatabase: Record<number, {
     description: "Un t-shirt basique mais élégant, parfait pour toutes les occasions.",
     images: ["merch7", "merch7", "merch7"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Noir", "Blanc", "Beige"],
+    colors: ["Beige", "Noir"],
     details: [
       "Coupe confortable",
       "Jersey doux",
@@ -90,7 +90,7 @@ const productsDatabase: Record<number, {
     description: "Pull oversize pour un look décontracté et tendance. Confort maximal garanti.",
     images: ["merch9", "merch9", "merch9"],
     sizes: ["S", "M", "L", "XL"],
-    colors: ["Gris", "Crème", "Noir"],
+    colors: ["Beige", "Noir"],
     details: [
       "Maille douce",
       "Coupe oversize",
@@ -106,7 +106,7 @@ const productsDatabase: Record<number, {
     description: "Pull col V classique pour homme. L'élégance au quotidien.",
     images: ["merch10", "merch10", "merch10"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Marine", "Gris", "Noir"],
+    colors: ["Beige", "Noir"],
     details: [
       "Laine mérinos",
       "Col V classique",
@@ -122,7 +122,7 @@ const productsDatabase: Record<number, {
     description: "Pull en maille fine, léger et élégant. Idéal pour la mi-saison.",
     images: ["merch11", "merch11", "merch11"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Rose", "Blanc", "Noir"],
+    colors: ["Beige", "Noir"],
     details: [
       "Maille fine premium",
       "Coupe ajustée",
@@ -138,7 +138,7 @@ const productsDatabase: Record<number, {
     description: "T-shirt technique pour le sport. Confort et performance.",
     images: ["merch8", "merch8", "merch8"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Noir", "Gris", "Bleu"],
+    colors: ["Beige", "Noir"],
     details: [
       "Tissu respirant",
       "Anti-transpiration",
@@ -154,7 +154,7 @@ const productsDatabase: Record<number, {
     description: "T-shirt casual pour un style décontracté. Confort au quotidien.",
     images: ["merch2", "merch2", "merch2"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Blanc", "Noir", "Gris"],
+    colors: ["Beige", "Noir"],
     details: [
       "Coton peigné",
       "Coupe regular",
@@ -170,7 +170,7 @@ const productsDatabase: Record<number, {
     description: "Pull casual pour homme. Le parfait équilibre entre style et confort.",
     images: ["merch3", "merch3", "merch3"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Gris", "Bleu", "Noir"],
+    colors: ["Beige", "Noir"],
     details: [
       "Maille moyenne",
       "Style décontracté",
@@ -186,7 +186,7 @@ const productsDatabase: Record<number, {
     description: "T-shirt premium pour homme. Qualité supérieure et style raffiné.",
     images: ["merch15", "merch15", "merch15"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Noir", "Blanc", "Marine"],
+    colors: ["Beige", "Noir"],
     details: [
       "Coton premium",
       "Coupe slim",
@@ -202,7 +202,7 @@ const productsDatabase: Record<number, {
     description: "Le t-shirt classique par excellence. Un basique indispensable.",
     images: ["merch16", "merch16", "merch16"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Blanc", "Noir", "Gris"],
+    colors: ["Beige", "Noir"],
     details: [
       "100% coton",
       "Coupe classique",
@@ -218,7 +218,7 @@ const productsDatabase: Record<number, {
     description: "Un cardigan élégant et polyvalent pour toutes les occasions.",
     images: ["merch13", "merch13", "merch13"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Beige", "Gris", "Noir"],
+    colors: ["Beige", "Noir"],
     details: [
       "Laine mélangée",
       "Boutons premium",
@@ -234,7 +234,7 @@ const productsDatabase: Record<number, {
     description: "T-shirt manches longues confortable et stylé.",
     images: ["merch6", "merch6", "merch6"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Blanc", "Noir", "Marine"],
+    colors: ["Beige", "Noir"],
     details: [
       "Jersey doux",
       "Manches longues",
@@ -250,12 +250,12 @@ const productsDatabase: Record<number, {
     description: "Pull en coton confortable et résistant.",
     images: ["merch12", "merch12", "merch12"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Gris", "Marine", "Bordeaux"],
+    colors: ["Beige", "Noir"],
     details: [
-      "100% coton",
-      "Maille serrée",
+      "Coton doux",
+      "Coupe confortable",
       "Entretien facile",
-      "Coupe droite"
+      "Style intemporel"
     ]
   },
   16: {
@@ -290,6 +290,19 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
   const productId = parseInt(id);
   const product = productsDatabase[productId];
 
+  // Fonction pour obtenir le chemin de l'image en fonction de la couleur
+  const getImagePath = (isBlack: boolean) => {
+    const baseNumber = getImageNumber(product.images[0]);
+    return isBlack 
+      ? `/merch-black/merch-black${baseNumber}`
+      : `/merch/${product.images[0]}`;
+  };
+
+  // Fonction pour extraire le numéro de l'image
+  const getImageNumber = (imageName: string) => {
+    return imageName.replace('merch', '');
+  };
+
   const handleAddToCart = () => {
     if (!selectedSize || !selectedColor) {
       setError('Veuillez sélectionner une taille et une couleur');
@@ -297,11 +310,12 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
     }
     
     setError('');
+    const imageNumber = getImageNumber(product.image);
     addToCart({
       id: product.id,
       title: product.title,
       price: product.price,
-      image: product.image,
+      image: selectedColor === 'Noir' ? `merch-black${imageNumber}` : product.image,
       quantity: 1,
       size: selectedSize,
       color: selectedColor
@@ -334,31 +348,44 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
             <div className="space-y-4">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                 <Image
-                  src={`/merch/${product.images[selectedImage]}.png`}
+                  src={`${selectedColor === 'Noir' ? getImagePath(true) : getImagePath(false)}.png`}
                   alt={product.title}
                   layout="fill"
                   objectFit="cover"
                   className="hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="grid grid-cols-3 gap-4">
-                {product.images.map((img, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.05 }}
-                    className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
-                      selectedImage === index ? 'ring-2 ring-[#E6AACE]' : ''
-                    }`}
-                    onClick={() => setSelectedImage(index)}
-                  >
-                    <Image
-                      src={`/merch/${img}.png`}
-                      alt={`${product.title} vue ${index + 1}`}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Image Beige */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
+                    selectedColor !== 'Noir' ? 'ring-2 ring-[#E6AACE]' : ''
+                  }`}
+                  onClick={() => setSelectedColor('Beige')}
+                >
+                  <Image
+                    src={`${getImagePath(false)}.png`}
+                    alt={`${product.title} - Beige`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </motion.div>
+                {/* Image Noire */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
+                    selectedColor === 'Noir' ? 'ring-2 ring-[#E6AACE]' : ''
+                  }`}
+                  onClick={() => setSelectedColor('Noir')}
+                >
+                  <Image
+                    src={`${getImagePath(true)}.png`}
+                    alt={`${product.title} - Noir`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </motion.div>
               </div>
             </div>
 
