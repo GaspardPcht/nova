@@ -11,7 +11,7 @@ const products = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="bg-gradient-to-br from-[#F5E6E8] to-[#E6AACE] py-16">
+    <section id="featured-products" className="bg-gradient-to-br from-[#F5E6E8] to-[#E6AACE] py-16">
       <div className="max-w-7xl mx-auto px-8">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-700">
           Nos meilleures ventes

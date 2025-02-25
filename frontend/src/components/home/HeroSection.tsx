@@ -2,6 +2,20 @@
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const headerOffset = 100;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F8F2E6] pt-24 pb-32">
       {/* Éléments décoratifs */}
@@ -45,13 +59,22 @@ const HeroSection = () => {
           </motion.p>
           
           <motion.div
-            className="mt-16 flex items-center gap-12 ml-12"
+            className="mt-16 flex items-center gap-8 ml-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <button className="px-12 py-5 bg-[#1F2937] text-white text-xl font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+            <button 
+              onClick={() => scrollToSection('featured-products')}
+              className="px-8 py-4 bg-[#1F2937] text-white text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
+            >
               Shop Now
+            </button>
+            <button 
+              onClick={() => scrollToSection('about-section')}
+              className="px-8 py-4 bg-white text-[#1F2937] text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#E6AACE] hover:text-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 border-2 border-[#1F2937]"
+            >
+              À propos
             </button>
             <div className="text-base text-[#1F2937]/60 uppercase tracking-[0.2em] rotate-90 transform translate-y-4">
               Scroll →
