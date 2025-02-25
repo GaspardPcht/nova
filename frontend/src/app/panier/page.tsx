@@ -27,7 +27,7 @@ export default function CartPage() {
                 <AnimatePresence>
                   {cart.map((item) => (
                     <motion.div
-                      key={item.id}
+                      key={`${item.id}-${item.size}-${item.color}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, x: -100 }}
