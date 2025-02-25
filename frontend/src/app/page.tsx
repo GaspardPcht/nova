@@ -4,6 +4,7 @@ import Footer from '../components/layout/Footer';
 import HeroSection from '../components/home/HeroSection';
 import FeaturedProducts from '../components/home/FeaturedProducts';
 import AboutSection from '../components/home/AboutSection';
+import Divider from '../components/layout/Divider';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <FeaturedProducts />
         <AboutSection />
       </main>
+      <Divider />
       <Footer />
     </div>
   );
