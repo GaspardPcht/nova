@@ -35,7 +35,7 @@ export default function CartPage() {
                     >
                       <div className="relative w-24 h-24">
                         <Image
-                          src={`/merch/${item.image}.png`}
+                          src={item.color === 'Noir' ? `/merch-black/${item.image}.png` : `/merch/${item.image}.png`}
                           alt={item.title}
                           layout="fill"
                           objectFit="cover"
@@ -51,7 +51,7 @@ export default function CartPage() {
                       <div className="flex flex-col items-end gap-2">
                         <select
                           value={item.quantity}
-                          onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                          onChange={(e) => updateQuantity(item.id, item.size || '', item.color || '', parseInt(e.target.value))}
                           className="border rounded px-2 py-1 text-black"
                         >
                           {[1, 2, 3, 4, 5].map(num => (
@@ -61,7 +61,7 @@ export default function CartPage() {
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.id, item.size, item.color)}
                           className="text-red-500 text-sm hover:underline"
                         >
                           Supprimer

@@ -310,12 +310,17 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
     }
     
     setError('');
-    const imageNumber = getImageNumber(product.image);
+    const baseNumber = getImageNumber(product.images[0]);
+    // Stockons juste le nom de l'image sans le chemin complet
+    const cartImage = selectedColor === 'Noir' 
+      ? `merch-black${baseNumber}` 
+      : product.images[0];
+
     addToCart({
       id: product.id,
       title: product.title,
       price: product.price,
-      image: selectedColor === 'Noir' ? `merch-black${imageNumber}` : product.image,
+      image: cartImage,
       quantity: 1,
       size: selectedSize,
       color: selectedColor
@@ -355,7 +360,7 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
                   className="hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 max-w-[350px] mx-auto">
                 {/* Image Beige */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
