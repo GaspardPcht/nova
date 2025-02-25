@@ -4,13 +4,13 @@ import Layout from '@/components/layout/Layout';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
-  { id: 6, title: "Pull Col V", price: 49.99, image: "merch10" },
-  { id: 10, title: "Pull Casual", price: 54.99, image: "merch3" },
-  { id: 15, title: "Pull Coton", price: 45.99, image: "merch12" },
-  { id: 16, title: "Pull Laine", price: 59.99, image: "merch13" },
+  { id: 24, title: "Gourde Sport Beige", price: 24.99, image: "acces-beige/gourdes/gourdes-beige1" },
+  { id: 25, title: "Gourde Isotherme Beige", price: 29.99, image: "acces-beige/gourdes/gourdes-beige2" },
+  { id: 26, title: "Gourde Sport Noir", price: 24.99, image: "acces-black/gourdes/gourdes-black1" },
+  { id: 27, title: "Gourde Isotherme Noir", price: 29.99, image: "acces-black/gourdes/gourdes-black2" },
 ];
 
-const PullsHommes = () => {
+const Gourdes = () => {
   return (
     <Layout>
       <div className="pt-32 relative">
@@ -29,21 +29,21 @@ const PullsHommes = () => {
           <div className="text-center mb-16">
             <div className="mb-4">
               <span className="text-lg font-light text-[#E6AACE] tracking-widest uppercase">
-                Pour Homme
+                Accessoires
               </span>
             </div>
             <h1 className="mb-6">
               <span className="text-7xl font-black text-gray-800 tracking-tight">
-                PULLS
+                GOURDES
               </span>
               <span className="block text-2xl font-light text-gray-600 mt-4">
                 COLLECTION 2024
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Découvrez notre collection exclusive de pulls pour hommes. 
-              Des pièces intemporelles alliant confort et élégance, 
-              conçues pour le gentleman moderne.
+              Explorez notre collection de gourdes design et écologiques.
+              Des accessoires pratiques et élégants,
+              pour vous accompagner au quotidien.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ const PullsHommes = () => {
                   title={product.title}
                   price={product.price}
                   image={product.image}
-                  href={`/produits/${product.id}`}
+                  href={`/accessoires/gourdes/${product.id}`}
                 />
               ))}
             </div>
@@ -68,4 +68,4 @@ const PullsHommes = () => {
   );
 };
 
-export default PullsHommes; 
+export default Gourdes; 

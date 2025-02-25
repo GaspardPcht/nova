@@ -4,13 +4,13 @@ import Layout from '@/components/layout/Layout';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
-  { id: 6, title: "Pull Col V", price: 49.99, image: "merch10" },
-  { id: 10, title: "Pull Casual", price: 54.99, image: "merch3" },
-  { id: 15, title: "Pull Coton", price: 45.99, image: "merch12" },
-  { id: 16, title: "Pull Laine", price: 59.99, image: "merch13" },
+  { id: 8, title: "T-Shirt Sport Homme", price: 24.99, image: "merch8" },
+  { id: 9, title: "T-Shirt Casual Homme", price: 22.99, image: "merch2" },
+  { id: 11, title: "T-Shirt Premium Homme", price: 29.99, image: "merch15" },
+  { id: 12, title: "T-Shirt Classic Homme", price: 19.99, image: "merch16" },
 ];
 
-const PullsHommes = () => {
+const TShirtsHommes = () => {
   return (
     <Layout>
       <div className="pt-32 relative">
@@ -34,16 +34,16 @@ const PullsHommes = () => {
             </div>
             <h1 className="mb-6">
               <span className="text-7xl font-black text-gray-800 tracking-tight">
-                PULLS
+                T-SHIRTS
               </span>
               <span className="block text-2xl font-light text-gray-600 mt-4">
                 COLLECTION 2024
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Découvrez notre collection exclusive de pulls pour hommes. 
-              Des pièces intemporelles alliant confort et élégance, 
-              conçues pour le gentleman moderne.
+              Découvrez notre collection de t-shirts pour hommes.
+              Des pièces essentielles au style contemporain,
+              pour un look casual et raffiné.
             </p>
           </div>
 
@@ -68,4 +68,4 @@ const PullsHommes = () => {
   );
 };
 
-export default PullsHommes; 
+export default TShirtsHommes; 

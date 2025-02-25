@@ -2,33 +2,32 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/context/CartContext';
 import { motion } from 'framer-motion';
+import { useCart } from '@/context/CartContext';
 
 interface ProductCardProps {
   id: number;
   title: string;
   price: number;
   image: string;
+  href: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, image }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, image, href }) => {
   const router = useRouter();
   const { addToCart } = useCart();
 
-  const handleClick = () => {
-    router.push(`/produits/${id}`);
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (href) {
+      console.log('Navigating to:', href);
+      router.push(href);
+    }
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart({
-      id,
-      title,
-      price,
-      image,
-      quantity: 1
-    });
+    addToCart({ id, title, price, image, quantity: 1 });
   };
 
   return (

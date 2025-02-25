@@ -47,23 +47,23 @@ const hommeCategories = [
 
 const accessoiresCategories = [
   { 
-    name: 'Bijoux', 
-    description: 'Colliers, bagues et bracelets', 
-    href: '/accessoires/bijoux',
-    icon: SparklesIcon 
+    name: 'Mugs', 
+    description: 'Collection de mugs', 
+    href: '/accessoires/mugs',
+    icon: GiftIcon 
+  },
+  { 
+    name: 'Gourdes', 
+    description: 'Collection de gourdes', 
+    href: '/accessoires/gourdes',
+    icon: HeartIcon 
   },
   { 
     name: 'Sacs', 
     description: 'Sacs à main et pochettes', 
     href: '/accessoires/sacs',
     icon: ShoppingBagIcon 
-  },
-  { 
-    name: 'Ceintures', 
-    description: 'Collection de ceintures', 
-    href: '/accessoires/ceintures',
-    icon: TagIcon 
-  },
+  }
 ];
 
 const Header = () => {

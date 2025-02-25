@@ -4,13 +4,13 @@ import Layout from '@/components/layout/Layout';
 import ProductCard from '@/components/products/ProductCard';
 
 const products = [
-  { id: 6, title: "Pull Col V", price: 49.99, image: "merch10" },
-  { id: 10, title: "Pull Casual", price: 54.99, image: "merch3" },
-  { id: 15, title: "Pull Coton", price: 45.99, image: "merch12" },
-  { id: 16, title: "Pull Laine", price: 59.99, image: "merch13" },
+  { id: 2, title: "T-Shirt Basic Femme", price: 19.99, image: "merch4" },
+  { id: 3, title: "T-Shirt Imprimé Femme", price: 24.99, image: "merch5" },
+  { id: 4, title: "T-Shirt Femme", price: 22.99, image: "merch7" },
+  { id: 14, title: "T-Shirt Manches Longues Femme", price: 29.99, image: "merch6" },
 ];
 
-const PullsHommes = () => {
+const TShirtsFemmes = () => {
   return (
     <Layout>
       <div className="pt-32 relative">
@@ -29,21 +29,21 @@ const PullsHommes = () => {
           <div className="text-center mb-16">
             <div className="mb-4">
               <span className="text-lg font-light text-[#E6AACE] tracking-widest uppercase">
-                Pour Homme
+                Pour Femme
               </span>
             </div>
             <h1 className="mb-6">
               <span className="text-7xl font-black text-gray-800 tracking-tight">
-                PULLS
+                T-SHIRTS
               </span>
               <span className="block text-2xl font-light text-gray-600 mt-4">
                 COLLECTION 2024
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Découvrez notre collection exclusive de pulls pour hommes. 
-              Des pièces intemporelles alliant confort et élégance, 
-              conçues pour le gentleman moderne.
+              Découvrez notre collection de t-shirts pour femmes.
+              Des pièces essentielles au style unique,
+              pour un look décontracté et tendance.
             </p>
           </div>
 
@@ -68,4 +68,4 @@ const PullsHommes = () => {
   );
 };
 
-export default PullsHommes; 
+export default TShirtsFemmes; 
