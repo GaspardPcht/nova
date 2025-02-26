@@ -471,7 +471,7 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
           </div>
         </div>
       </main>
-      <Footer />
+    
     </div>
   );
 } 
