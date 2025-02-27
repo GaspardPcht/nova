@@ -33,7 +33,13 @@ export default function CartPage() {
                     >
                       <div className="relative w-24 h-24">
                         <Image
-                          src={item.color === 'Noir' ? `/merch-black/${item.image}.png` : `/merch/${item.image}.png`}
+                          src={
+                            item.image.startsWith('acces-') 
+                              ? `/${item.image}.png` 
+                              : item.color === 'Noir'
+                                ? `/merch-black/${item.image}.png`
+                                : `/merch/${item.image}.png`
+                          }
                           alt={item.title}
                           layout="fill"
                           objectFit="cover"

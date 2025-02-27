@@ -27,7 +27,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, image, href
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart({ id, title, price, image, quantity: 1 });
+    addToCart({ 
+      id, 
+      title, 
+      price, 
+      image, 
+      quantity: 1,
+      color: 'Beige',
+      size: 'M' // Taille par défaut
+    });
   };
 
   return (
@@ -37,7 +45,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, image, href
     >
       <div className="relative w-full h-60">
         <Image 
-          src={`/merch/${image}.png`} 
+          src={
+            // Vérifier si l'image est un accessoire
+            image.startsWith('acces-') 
+              ? `/${image}.png` 
+              : `/merch/${image}.png`
+          }
           alt={title} 
           layout="fill" 
           objectFit="cover"
