@@ -558,47 +558,52 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Galerie d'images */}
             <div className="space-y-4">
-              <div className="relative aspect-square w-full rounded-xl overflow-hidden">
+              <div className="relative rounded-xl overflow-hidden flex justify-center items-center">
                 <Image
                   src={`/${selectedColor === 'Noir' ? getImagePath(true) : getImagePath(false)}.png`}
                   alt={product.title}
-                  width={500}
-                  height={500}
-                  className="hover:scale-105 transition-transform duration-300"
+                  width={450}
+                  height={450}
+                  className="hover:scale-105 transition-transform duration-300 object-contain"
+                  style={{ maxHeight: '550px' }}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 max-w-[350px] mx-auto">
                 {/* Image Beige */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
+                  className={`relative cursor-pointer rounded-lg overflow-hidden ${
                     selectedColor !== 'Noir' ? 'ring-2 ring-[#E6AACE]' : ''
                   }`}
                   onClick={() => setSelectedColor('Beige')}
                 >
-                  <Image
-                    src={`/${getImagePath(false)}.png`}
-                    alt={`${product.title} - Beige`}
-                    width={200}
-                    height={200}
-                    className="object-cover"
-                  />
+                  <div className="h-[150px] flex items-center justify-center">
+                    <Image
+                      src={`/${getImagePath(false)}.png`}
+                      alt={`${product.title} - Beige`}
+                      width={120}
+                      height={120}
+                      className="object-contain"
+                    />
+                  </div>
                 </motion.div>
                 {/* Image Noire */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className={`relative aspect-square cursor-pointer rounded-lg overflow-hidden ${
+                  className={`relative cursor-pointer rounded-lg overflow-hidden ${
                     selectedColor === 'Noir' ? 'ring-2 ring-[#E6AACE]' : ''
                   }`}
                   onClick={() => setSelectedColor('Noir')}
                 >
-                  <Image
-                    src={`/${getImagePath(true)}.png`}
-                    alt={`${product.title} - Noir`}
-                    width={200}
-                    height={200}
-                    className="object-cover"
-                  />
+                  <div className="h-[150px] flex items-center justify-center">
+                    <Image
+                      src={`/${getImagePath(true)}.png`}
+                      alt={`${product.title} - Noir`}
+                      width={120}
+                      height={120}
+                      className="object-contain"
+                    />
+                  </div>
                 </motion.div>
               </div>
             </div>
