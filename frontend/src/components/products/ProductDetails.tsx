@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -273,6 +273,166 @@ const productsDatabase: Record<number, {
       "Respirant",
       "Coupe classique"
     ]
+  },
+  20: {
+    id: 20,
+    title: "Mug Classic",
+    price: 14.99,
+    image: "acces-beige/mugs/mugs-beige1",
+    description: "Un mug élégant et pratique pour vos boissons chaudes quotidiennes.",
+    images: ["acces-beige/mugs/mugs-beige1", "acces-beige/mugs/mugs-beige1", "acces-beige/mugs/mugs-beige1"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Céramique haute qualité",
+      "Contenance 350ml",
+      "Compatible lave-vaisselle",
+      "Design exclusif Nova"
+    ]
+  },
+  21: {
+    id: 21,
+    title: "Mug Nova",
+    price: 16.99,
+    image: "acces-beige/mugs/mugs-beige2",
+    description: "Un mug au design unique avec le logo Nova.",
+    images: ["acces-beige/mugs/mugs-beige2", "acces-beige/mugs/mugs-beige2", "acces-beige/mugs/mugs-beige2"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Céramique premium",
+      "Contenance 400ml",
+      "Logo Nova gravé",
+      "Finition mate élégante"
+    ]
+  },
+  22: {
+    id: 22,
+    title: "Mug Design",
+    price: 15.99,
+    image: "acces-beige/mugs/mugs-beige3",
+    description: "Un mug au design contemporain pour les amateurs de style.",
+    images: ["acces-beige/mugs/mugs-beige3", "acces-beige/mugs/mugs-beige3", "acces-beige/mugs/mugs-beige3"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Design moderne",
+      "Contenance 300ml",
+      "Double paroi isolante",
+      "Prise en main ergonomique"
+    ]
+  },
+  23: {
+    id: 23,
+    title: "Mug Premium",
+    price: 19.99,
+    image: "acces-beige/mugs/mugs-beige4",
+    description: "Le mug haut de gamme pour les connaisseurs.",
+    images: ["acces-beige/mugs/mugs-beige4", "acces-beige/mugs/mugs-beige4", "acces-beige/mugs/mugs-beige4"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Porcelaine fine",
+      "Contenance 350ml",
+      "Finition luxueuse",
+      "Design exclusif"
+    ]
+  },
+  24: {
+    id: 24,
+    title: "Gourde Sport",
+    price: 24.99,
+    image: "acces-beige/gourdes/gourdes-beige1",
+    description: "Une gourde sportive et écologique pour rester hydraté.",
+    images: ["acces-beige/gourdes/gourdes-beige1", "acces-beige/gourdes/gourdes-beige1", "acces-beige/gourdes/gourdes-beige1"],
+    sizes: ["500ml"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Acier inoxydable",
+      "Sans BPA",
+      "Double paroi isolante",
+      "Bouchon sport"
+    ]
+  },
+  25: {
+    id: 25,
+    title: "Gourde Isotherme",
+    price: 29.99,
+    image: "acces-beige/gourdes/gourdes-beige2",
+    description: "Une gourde isotherme pour maintenir vos boissons à température.",
+    images: ["acces-beige/gourdes/gourdes-beige2", "acces-beige/gourdes/gourdes-beige2", "acces-beige/gourdes/gourdes-beige2"],
+    sizes: ["750ml"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "24h froid / 12h chaud",
+      "Acier inoxydable premium",
+      "Système anti-fuite",
+      "Design épuré"
+    ]
+  },
+  28: {
+    id: 28,
+    title: "Tote Bag Nova",
+    price: 19.99,
+    image: "acces-beige/sacs/sac-beige1",
+    description: "Un tote bag élégant et pratique pour tous les jours.",
+    images: ["acces-beige/sacs/sac-beige1", "acces-beige/sacs/sac-beige1", "acces-beige/sacs/sac-beige1"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Coton bio",
+      "Grande capacité",
+      "Anses renforcées",
+      "Logo Nova brodé"
+    ]
+  },
+  29: {
+    id: 29,
+    title: "Sac Shopping",
+    price: 24.99,
+    image: "acces-beige/sacs/sac-beige2",
+    description: "Un sac shopping spacieux et résistant.",
+    images: ["acces-beige/sacs/sac-beige2", "acces-beige/sacs/sac-beige2", "acces-beige/sacs/sac-beige2"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Toile résistante",
+      "Multiples poches",
+      "Fermeture zippée",
+      "Design fonctionnel"
+    ]
+  },
+  30: {
+    id: 30,
+    title: "Sac Week-end",
+    price: 49.99,
+    image: "acces-beige/sacs/sac-beige3",
+    description: "Le sac parfait pour vos escapades du week-end.",
+    images: ["acces-beige/sacs/sac-beige3", "acces-beige/sacs/sac-beige3", "acces-beige/sacs/sac-beige3"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Grande capacité",
+      "Bandoulière ajustable",
+      "Poches multiples",
+      "Matériaux premium"
+    ]
+  },
+  31: {
+    id: 31,
+    title: "Mini Sac Nova",
+    price: 29.99,
+    image: "acces-beige/sacs/sac-beige4",
+    description: "Un mini sac tendance pour vos sorties.",
+    images: ["acces-beige/sacs/sac-beige4", "acces-beige/sacs/sac-beige4", "acces-beige/sacs/sac-beige4"],
+    sizes: ["Unique"],
+    colors: ["Beige", "Noir"],
+    details: [
+      "Format compact",
+      "Finitions soignées",
+      "Fermeture magnétique",
+      "Design élégant"
+    ]
   }
 };
 
@@ -292,14 +452,41 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
 
   // Fonction pour obtenir le chemin de l'image en fonction de la couleur
   const getImagePath = (isBlack: boolean) => {
+    // Si l'image commence par "acces-", c'est un accessoire
+    if (product.images[0].startsWith('acces-')) {
+      const imageParts = product.images[0].split('/');
+      const category = imageParts[1]; // mugs, gourdes, ou sacs
+      
+      // Extraire le numéro de base de l'image beige
+      const matches = imageParts[2].match(/beige(\d+)/);
+      const baseNumber = matches ? matches[1] : '1';
+      
+      // Gestion spéciale pour les sacs
+      if (category === 'sacs') {
+        return isBlack 
+          ? `acces-black/sacs/sacs-black${baseNumber}`
+          : `acces-beige/sacs/sac-beige${baseNumber}`;
+      }
+      
+      // Pour les autres accessoires (mugs et gourdes)
+      return isBlack 
+        ? `acces-black/${category}/${category}-black${baseNumber}`
+        : `acces-beige/${category}/${category}-beige${baseNumber}`;
+    }
+    
+    // Pour les vêtements
     const baseNumber = getImageNumber(product.images[0]);
     return isBlack 
-      ? `/merch-black/merch-black${baseNumber}`
-      : `/merch/${product.images[0]}`;
+      ? `merch-black/merch-black${baseNumber}`
+      : `merch/${product.images[0]}`;
   };
 
   // Fonction pour extraire le numéro de l'image
   const getImageNumber = (imageName: string) => {
+    // Si c'est un accessoire, retourner une chaîne vide
+    if (imageName.startsWith('acces-')) {
+      return '';
+    }
     return imageName.replace('merch', '');
   };
 
@@ -310,11 +497,24 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
     }
     
     setError('');
-    const baseNumber = getImageNumber(product.images[0]);
-    // Stockons juste le nom de l'image sans le chemin complet
-    const cartImage = selectedColor === 'Noir' 
-      ? `merch-black${baseNumber}` 
-      : product.images[0];
+    
+    // Gestion différente des images pour les accessoires et les vêtements
+    let cartImage;
+    if (product.images[0].startsWith('acces-')) {
+      const imageParts = product.images[0].split('/');
+      const category = imageParts[1];
+      const matches = imageParts[2].match(/\d+/);
+      const baseNumber = matches ? matches[0] : '1';
+      
+      cartImage = selectedColor === 'Noir'
+        ? `acces-black/${category}/${category}-black${baseNumber}`
+        : `acces-beige/${category}/${category}-beige${baseNumber}`;
+    } else {
+      const baseNumber = getImageNumber(product.images[0]);
+      cartImage = selectedColor === 'Noir'
+        ? `merch-black${baseNumber}`
+        : product.images[0];
+    }
 
     addToCart({
       id: product.id,
@@ -326,6 +526,13 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
       color: selectedColor
     });
   };
+
+  useEffect(() => {
+    // Initialiser la couleur par défaut à Beige
+    if (!selectedColor) {
+      setSelectedColor('Beige');
+    }
+  }, []);
 
   if (!product) {
     return (
@@ -353,10 +560,10 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
             <div className="space-y-4">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                 <Image
-                  src={`${selectedColor === 'Noir' ? getImagePath(true) : getImagePath(false)}.png`}
+                  src={`/${selectedColor === 'Noir' ? getImagePath(true) : getImagePath(false)}.png`}
                   alt={product.title}
-                  layout="fill"
-                  objectFit="cover"
+                  width={500}
+                  height={500}
                   className="hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -370,10 +577,11 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
                   onClick={() => setSelectedColor('Beige')}
                 >
                   <Image
-                    src={`${getImagePath(false)}.png`}
+                    src={`/${getImagePath(false)}.png`}
                     alt={`${product.title} - Beige`}
-                    layout="fill"
-                    objectFit="cover"
+                    width={200}
+                    height={200}
+                    className="object-cover"
                   />
                 </motion.div>
                 {/* Image Noire */}
@@ -385,10 +593,11 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
                   onClick={() => setSelectedColor('Noir')}
                 >
                   <Image
-                    src={`${getImagePath(true)}.png`}
+                    src={`/${getImagePath(true)}.png`}
                     alt={`${product.title} - Noir`}
-                    layout="fill"
-                    objectFit="cover"
+                    width={200}
+                    height={200}
+                    className="object-cover"
                   />
                 </motion.div>
               </div>
