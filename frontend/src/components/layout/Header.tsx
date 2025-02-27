@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import NavPopover from '../ui/NavPopover';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const femmeCategories = [

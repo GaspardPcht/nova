@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { motion } from 'framer-motion';
 
 // Base de données des produits (à déplacer plus tard dans un fichier séparé)
