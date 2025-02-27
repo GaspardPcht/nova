@@ -57,6 +57,7 @@ const TshirtsFemmes = () => {
                   title={product.title}
                   price={product.price}
                   image={product.image}
+                  href={`/produits/${product.id}`}
                 />
               ))}
             </div>
