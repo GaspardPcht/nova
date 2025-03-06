@@ -19,8 +19,7 @@ export default function CartPage() {
       router.push('/login');
       return;
     }
-    // TODO: Implémenter la logique de paiement
-    console.log('Procéder au paiement...');
+    router.push('/payment');
   };
 
   return (
