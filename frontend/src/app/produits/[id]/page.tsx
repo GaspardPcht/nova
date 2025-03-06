@@ -35,7 +35,13 @@ const ProductPage = () => {
   const params = useParams();
   const id = params?.id;
 
-  if (!id) {
+  // Convertir l'ID en string s'il ne l'est pas déjà
+  const productId = Array.isArray(id) ? id[0] : id;
+  
+  // Trouver le produit correspondant
+  const product = products.find(p => p.id === Number(productId));
+
+  if (!product) {
     return (
       <Layout>
         <div className="pt-32 px-8 max-w-7xl mx-auto">
@@ -51,12 +57,17 @@ const ProductPage = () => {
     );
   }
 
-  // Convertir l'ID en string s'il ne l'est pas déjà
-  const productId = Array.isArray(id) ? id[0] : id;
-
   return (
     <Layout>
-      <ProductDetails id={productId} />
+      <ProductDetails
+        id={String(product.id)}
+        title={product.title}
+        price={product.price}
+        image={product.image}
+        description={`${product.title} - Un vêtement élégant et confortable de la collection Nova.`}
+        category={product.category}
+        subcategory={product.subcategory}
+      />
     </Layout>
   );
 };
