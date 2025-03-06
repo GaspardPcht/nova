@@ -34,10 +34,10 @@ export default function AccountPage() {
       console.log("Tentative de récupération des informations avec le token:", user.token);
 
       try {
-        const response = await fetch('http://localhost:3000/api/auth/profile', {
+        const response = await fetch('https://nova-back-gules.vercel.app/api/auth/profile', {
           method: 'GET',
           headers: {
-         
+            'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json',
           },
         });

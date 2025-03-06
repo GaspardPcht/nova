@@ -59,7 +59,7 @@ export default function RegisterPage() {
     try {
       console.log('Tentative d\'inscription avec:', { email: formData.email });
       
-      const response = await fetch('http://localhost:3000/api/auth/register', {
+      const response = await fetch('https://nova-back-gules.vercel.app/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
