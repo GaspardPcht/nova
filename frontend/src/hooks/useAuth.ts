@@ -21,8 +21,12 @@ interface LoginCredentials {
 }
 
 // Interface pour les données d'inscription
-interface RegisterData extends LoginCredentials {
-  name: string;
+interface RegisterData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
 }
 
 // Hook personnalisé pour l'authentification
@@ -34,36 +38,25 @@ export function useAuth() {
   const error = useAppSelector(selectAuthError);
   const token = useAppSelector(selectAuthToken);
 
-  // Fonction de connexion (à implémenter avec l'API)
+  // Fonction de connexion
   const login = async (credentials: LoginCredentials) => {
     try {
       dispatch(setLoading());
       
-      // Simulation d'une requête API (à remplacer par une vraie requête)
-      // const response = await fetch('/api/auth/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(credentials),
-      // });
+      const response = await fetch('https://nova-back-gules.vercel.app/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
+      });
       
-      // const data = await response.json();
+      const data = await response.json();
       
-      // if (!response.ok) {
-      //   throw new Error(data.message || 'Erreur de connexion');
-      // }
-      
-      // Simulation de réponse (à remplacer)
-      const mockUser: User = {
-        id: '1',
-        email: credentials.email,
-        name: 'Utilisateur Test',
-        role: 'user',
-      };
-      
-      const mockToken = 'mock-jwt-token';
+      if (!response.ok) {
+        throw new Error(data.message || 'Erreur de connexion');
+      }
       
       // Enregistrer les informations d'authentification
-      dispatch(setCredentials({ user: mockUser, token: mockToken }));
+      dispatch(setCredentials({ user: data, token: data.token }));
       
       return { success: true };
     } catch (err) {
@@ -73,36 +66,25 @@ export function useAuth() {
     }
   };
 
-  // Fonction d'inscription (à implémenter avec l'API)
+  // Fonction d'inscription
   const register = async (data: RegisterData) => {
     try {
       dispatch(setLoading());
       
-      // Simulation d'une requête API (à remplacer par une vraie requête)
-      // const response = await fetch('/api/auth/register', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
+      const response = await fetch('https://nova-back-gules.vercel.app/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
       
-      // const responseData = await response.json();
+      const responseData = await response.json();
       
-      // if (!response.ok) {
-      //   throw new Error(responseData.message || 'Erreur d\'inscription');
-      // }
-      
-      // Simulation de réponse (à remplacer)
-      const mockUser: User = {
-        id: '1',
-        email: data.email,
-        name: data.name,
-        role: 'user',
-      };
-      
-      const mockToken = 'mock-jwt-token';
+      if (!response.ok) {
+        throw new Error(responseData.message || 'Erreur d\'inscription');
+      }
       
       // Enregistrer les informations d'authentification
-      dispatch(setCredentials({ user: mockUser, token: mockToken }));
+      dispatch(setCredentials({ user: responseData, token: responseData.token }));
       
       return { success: true };
     } catch (err) {
