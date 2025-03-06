@@ -438,9 +438,23 @@ const productsDatabase: Record<number, {
 
 interface ProductDetailsProps {
   id: string;
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+  subcategory: string;
 }
 
-export default function ProductDetails({ id }: ProductDetailsProps) {
+export default function ProductDetails({
+  id,
+  title,
+  price,
+  image,
+  description,
+  category,
+  subcategory
+}: ProductDetailsProps) {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [error, setError] = useState('');

@@ -11,6 +11,20 @@ const products = [
   { id: 27, title: "Gourde Isotherme Noir", price: 29.99, image: "acces-black/gourdes/gourdes-black2" },
 ];
 
+interface ProductDetailsProps {
+  id: string;
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+  subcategory: string;
+}
+
+function ProductDetails({ id, title, price, image, description, category, subcategory }: ProductDetailsProps) {
+  // ... le reste du composant
+}
+
 const GourdePage = () => {
   const params = useParams();
   const id = params?.id;
