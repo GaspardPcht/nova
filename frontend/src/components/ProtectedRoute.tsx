@@ -1,21 +1,24 @@
 'use client';
 
-import { useAuth } from '@/context/AuthContext';
+import { useAppSelector } from '@/redux/hooks';
+import { selectIsAuthenticated } from '@/redux/features/auth/authSlice';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
     // Vérifier l'authentification
     if (!isAuthenticated) {
       console.log('Non authentifié, redirection vers login...');
-      window.location.href = '/login';
+      router.push('/login');
     } else {
       setIsChecking(false);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
 
   // Afficher un indicateur de chargement pendant la vérification
   if (isChecking) {

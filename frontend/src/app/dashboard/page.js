@@ -1,6 +1,7 @@
 'use client';
 
-import { useAuth } from '@/context/AuthContext';
+import { useAppSelector } from '@/redux/hooks';
+import { selectCurrentUser } from '@/redux/features/auth/authSlice';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { 
@@ -14,7 +15,7 @@ import {
 } from 'react-icons/fa';
 
 export default function DashboardPage() {
-  const { user, logout } = useAuth();
+  const user = useAppSelector(selectCurrentUser);
   const router = useRouter();
 
   useEffect(() => {

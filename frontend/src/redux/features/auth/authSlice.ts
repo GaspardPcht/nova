@@ -3,9 +3,12 @@ import { RootState } from '../../store';
 
 // Interface pour l'utilisateur
 export interface User {
-  id: string;
+  _id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  name: string;
+  phone: string;
+  createdAt: string;
   role: 'user' | 'admin';
 }
 

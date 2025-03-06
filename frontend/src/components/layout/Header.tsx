@@ -14,7 +14,8 @@ import NavPopover from '../ui/NavPopover';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/useCart';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAuth } from '@/context/AuthContext';
+import { useAppSelector } from '@/redux/hooks';
+import { selectIsAuthenticated } from '@/redux/features/auth/authSlice';
 
 const femmeCategories = [
   { 
@@ -70,7 +71,7 @@ const accessoiresCategories = [
 const Header = () => {
   const router = useRouter();
   const { cart } = useCart();
-  const { user } = useAuth();
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -128,7 +129,7 @@ const Header = () => {
             {/* Icône Utilisateur */}
             <div 
               className="cursor-pointer hover:text-[#E6AACE] transition-colors text-gray-700"
-              onClick={() => handleNavigate(user ? '/account' : '/login')}
+              onClick={() => handleNavigate(isAuthenticated ? '/account' : '/login')}
             >
               <UserIcon className="h-6 w-6" />
             </div>
@@ -212,10 +213,10 @@ const Header = () => {
 
                   <div 
                     className="flex items-center space-x-2 text-gray-700 hover:text-[#E6AACE] transition-colors cursor-pointer"
-                    onClick={() => handleNavigate(user ? '/account' : '/login')}
+                    onClick={() => handleNavigate(isAuthenticated ? '/account' : '/login')}
                   >
                     <UserIcon className="h-5 w-5" />
-                    <span>{user ? 'Mon Compte' : 'Se connecter'}</span>
+                    <span>{isAuthenticated ? 'Mon Compte' : 'Se connecter'}</span>
                   </div>
                 </div>
               </motion.div>

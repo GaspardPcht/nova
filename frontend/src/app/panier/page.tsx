@@ -2,12 +2,26 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { useCart } from '@/hooks/useCart';
+import { useAppSelector } from '@/redux/hooks';
+import { selectIsAuthenticated } from '@/redux/features/auth/authSlice';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const router = useRouter();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+    // TODO: Implémenter la logique de paiement
+    console.log('Procéder au paiement...');
+  };
 
   return (
     <Layout>
@@ -97,6 +111,7 @@ export default function CartPage() {
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={handleCheckout}
                   className="w-full bg-[#E6AACE] text-white py-3 rounded-lg hover:bg-[#d999bc] transition-colors duration-300"
                 >
                   Procéder au paiement
