@@ -8,6 +8,23 @@ const generateToken = (id) => {
   });
 };
 
+// Formater la réponse utilisateur de manière cohérente
+const formatUserResponse = (user) => {
+  // S'assurer que createdAt existe, sinon utiliser la date actuelle
+  const createdAt = user.createdAt || new Date();
+  
+  return {
+    _id: user._id.toString(),
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    phone: user.phone,
+    createdAt: createdAt.toISOString(),
+    role: user.role || 'user',
+    token: generateToken(user._id)
+  };
+};
+
 // @desc    Authentifier un utilisateur et obtenir un token
 // @route   POST /api/users/login
 // @access  Public
@@ -17,18 +34,14 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && await user.comparePassword(password)) {
-      res.json({
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        phone: user.phone,
-        token: generateToken(user._id)
-      });
+      const userResponse = formatUserResponse(user);
+      console.log('Login - données renvoyées:', JSON.stringify(userResponse, null, 2));
+      res.json(userResponse);
     } else {
       res.status(401).json({ message: 'Email ou mot de passe incorrect' });
     }
   } catch (error) {
+    console.error('Erreur de connexion:', error);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };
@@ -38,7 +51,7 @@ const loginUser = async (req, res) => {
 // @access  Public
 const registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, phone, password } = req.body;
 
     // Vérifier si l'utilisateur existe déjà
     const userExists = await User.findOne({ email });
@@ -52,18 +65,14 @@ const registerUser = async (req, res) => {
       firstName,
       lastName,
       email,
+      phone,
       password,
     });
 
     if (user) {
-      res.status(201).json({
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        token: generateToken(user._id),
-      });
+      const userResponse = formatUserResponse(user);
+      console.log('Register - données renvoyées:', JSON.stringify(userResponse, null, 2));
+      res.status(201).json(userResponse);
     } else {
       res.status(400).json({ message: 'Données utilisateur invalides' });
     }
@@ -78,24 +87,29 @@ const registerUser = async (req, res) => {
 // @access  Private
 const getUserProfile = async (req, res) => {
   try {
+    console.log('ID utilisateur reçu:', req.user._id);
+    
     const user = await User.findById(req.user._id);
+    console.log('Utilisateur trouvé (brut):', JSON.stringify(user, null, 2));
 
     if (user) {
-      res.json({
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        address: user.address,
-        phoneNumber: user.phoneNumber,
-        isAdmin: user.isAdmin,
-      });
+      // S'assurer que createdAt existe
+      if (!user.createdAt) {
+        user.createdAt = new Date();
+        await user.save();
+        console.log('Date de création ajoutée:', user.createdAt);
+      }
+
+      const userResponse = formatUserResponse(user);
+      console.log('GetProfile - données renvoyées:', JSON.stringify(userResponse, null, 2));
+      return res.json(userResponse);
     } else {
-      res.status(404).json({ message: 'Utilisateur non trouvé' });
+      console.log('Utilisateur non trouvé');
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Erreur serveur' });
+    console.error('Erreur dans getUserProfile:', error);
+    return res.status(500).json({ message: 'Erreur serveur', error: error.message });
   }
 };
 
@@ -104,36 +118,30 @@ const getUserProfile = async (req, res) => {
 // @access  Private
 const updateUserProfile = async (req, res) => {
   try {
+    console.log('Données reçues pour mise à jour:', req.body);
     const user = await User.findById(req.user._id);
 
     if (user) {
       user.firstName = req.body.firstName || user.firstName;
       user.lastName = req.body.lastName || user.lastName;
       user.email = req.body.email || user.email;
-      user.address = req.body.address || user.address;
-      user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
+      user.phone = req.body.phone || user.phone;
       
       if (req.body.password) {
         user.password = req.body.password;
       }
 
       const updatedUser = await user.save();
+      console.log('Utilisateur mis à jour:', updatedUser);
 
-      res.json({
-        _id: updatedUser._id,
-        firstName: updatedUser.firstName,
-        lastName: updatedUser.lastName,
-        email: updatedUser.email,
-        address: updatedUser.address,
-        phoneNumber: updatedUser.phoneNumber,
-        isAdmin: updatedUser.isAdmin,
-        token: generateToken(updatedUser._id),
-      });
+      const userResponse = formatUserResponse(updatedUser);
+      console.log('Réponse envoyée:', userResponse);
+      res.json(userResponse);
     } else {
       res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
   } catch (error) {
-    console.error(error);
+    console.error('Erreur lors de la mise à jour:', error);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };

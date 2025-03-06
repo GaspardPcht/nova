@@ -70,7 +70,7 @@ export default function AccountPage() {
       });
 
       const data = await response.json();
-      console.log('Données reçues du profil:', data);
+     
 
       if (!response.ok) {
         throw new Error(data.message || 'Erreur lors de la récupération du profil');
@@ -85,7 +85,6 @@ export default function AccountPage() {
           phone: data.phone || user.phone || '',
           createdAt: data.createdAt || new Date().toISOString()
         };
-        console.log('Détails formatés:', formattedUserDetails);
         setUserDetails(formattedUserDetails);
         setError(null);
       } else {
@@ -110,7 +109,6 @@ export default function AccountPage() {
 
   const handleSave = async () => {
     try {
-      console.log('Envoi des modifications:', editableDetails);
       const response = await fetch('https://nova-back-gules.vercel.app/api/users/profile', {
         method: 'PUT',
         headers: {
@@ -121,7 +119,6 @@ export default function AccountPage() {
       });
 
       const data = await response.json();
-      console.log('Réponse après mise à jour:', data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Erreur lors de la mise à jour du profil');

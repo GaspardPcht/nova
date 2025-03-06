@@ -28,9 +28,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  }
+}, {
+  timestamps: true,
+  toJSON: {
+    transform: function(doc, ret) {
+      ret.createdAt = ret.createdAt.toISOString();
+      delete ret.password;
+      delete ret.__v;
+      delete ret.updatedAt;
+      return ret;
+    }
   }
 });
 
