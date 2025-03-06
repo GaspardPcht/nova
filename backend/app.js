@@ -14,6 +14,7 @@ connectDB();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/auth', authRoutes);
 
 // Gestion des erreurs 404
 app.use((req, res, next) => {

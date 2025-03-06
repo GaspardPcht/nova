@@ -14,31 +14,21 @@ const generateToken = (id) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // Vérifier si l'utilisateur existe
     const user = await User.findOne({ email });
 
-    if (!user) {
-      return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
+    if (user && await user.comparePassword(password)) {
+      res.json({
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        token: generateToken(user._id)
+      });
+    } else {
+      res.status(401).json({ message: 'Email ou mot de passe incorrect' });
     }
-
-    // Vérifier si le mot de passe correspond
-    const isMatch = await user.matchPassword(password);
-
-    if (!isMatch) {
-      return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
-    }
-
-    res.json({
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
-    });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };

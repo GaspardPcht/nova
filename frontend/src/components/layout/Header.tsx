@@ -14,6 +14,7 @@ import NavPopover from '../ui/NavPopover';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/useCart';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '@/context/AuthContext';
 
 const femmeCategories = [
   { 
@@ -69,6 +70,7 @@ const accessoiresCategories = [
 const Header = () => {
   const router = useRouter();
   const { cart } = useCart();
+  const { user } = useAuth();
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -99,9 +101,6 @@ const Header = () => {
             <li>
               <NavPopover buttonText="Accessoires" categories={accessoiresCategories} />
             </li>
-            <li className="cursor-pointer hover:text-[#E6AACE] transition-colors text-gray-700 font-light">
-              Promotions
-            </li>
           </ul>
 
           {/* Actions (Panier et Menu Burger) */}
@@ -124,6 +123,14 @@ const Header = () => {
                   </motion.span>
                 )}
               </AnimatePresence>
+            </div>
+
+            {/* Icône Utilisateur */}
+            <div 
+              className="cursor-pointer hover:text-[#E6AACE] transition-colors text-gray-700"
+              onClick={() => handleNavigate(user ? '/account' : '/login')}
+            >
+              <UserIcon className="h-6 w-6" />
             </div>
 
             {/* Menu Burger pour Mobile */}
@@ -204,10 +211,11 @@ const Header = () => {
                   </div>
 
                   <div 
-                    className="text-gray-700 hover:text-[#E6AACE] transition-colors cursor-pointer font-light"
-                    onClick={() => handleNavigate('/promotions')}
+                    className="flex items-center space-x-2 text-gray-700 hover:text-[#E6AACE] transition-colors cursor-pointer"
+                    onClick={() => handleNavigate(user ? '/account' : '/login')}
                   >
-                    Promotions
+                    <UserIcon className="h-5 w-5" />
+                    <span>{user ? 'Mon Compte' : 'Se connecter'}</span>
                   </div>
                 </div>
               </motion.div>
