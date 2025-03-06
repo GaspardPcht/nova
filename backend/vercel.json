@@ -1,28 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "nova/frontend/package.json",
-      "use": "@vercel/next"
-    },
-    {
-      "src": "nova/backend/app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "nova/backend/app.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "nova/frontend/$1"
-    }
-  ],
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "JWT_SECRET": "@jwt_secret"
-  },
-  "regions": ["cdg1"]
-}
+  "builds": [{
+    "src": "app.js",
+    "use": "@vercel/node"
+  }],
+  "routes": [{
+    "src": "/(.*)",
+    "dest": "app.js"
+  }]
+ }
