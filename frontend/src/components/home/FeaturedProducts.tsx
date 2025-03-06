@@ -3,10 +3,10 @@ import React from 'react';
 import ProductCard from '../products/ProductCard';
 
 const products = [
-  { id: 6, title: "Pull Homme", price: 49.99, image: "merch10", href: "/hommes/pulls/6" },
-  { id: 12, title: "T-Shirt Classique Homme", price: 19.99, image: "merch16", href: "/hommes/t-shirts/12" },
-  { id: 7, title: "Pull Femme", price: 49.99, image: "merch11", href: "/femmes/pulls/7" },
-  { id: 2, title: "T-shirt Classique Femme", price: 19.99, image: "merch4", href: "/femmes/t-shirts/2" },
+  { id: 6, title: "Pull Homme", price: 49.99, image: "merch10", href: "/produits/6" },
+  { id: 12, title: "T-Shirt Classique Homme", price: 19.99, image: "merch16", href: "/produits/12" },
+  { id: 7, title: "Pull Femme", price: 49.99, image: "merch11", href: "/produits/7" },
+  { id: 2, title: "T-shirt Classique Femme", price: 19.99, image: "merch4", href: "/produits/2" },
 ];
 
 const FeaturedProducts = () => {
