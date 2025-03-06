@@ -19,12 +19,12 @@ const createNoopStorage = () => {
   };
 };
 
-const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
+const storageInstance = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
 
 // Configuration de la persistance
 const persistConfig = {
   key: 'nova',
-  storage,
+  storage: storageInstance,
   whitelist: ['cart', 'auth'], // Éléments à persister
 };
 
